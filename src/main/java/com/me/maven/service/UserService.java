@@ -19,10 +19,10 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import com.me.maven.dao.UserMapper;
 import com.me.maven.model.User;
 
+
 public class UserService {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 		SqlSession session = getSqlSession();
 		UserMapper uMap = session.getMapper(UserMapper.class);
@@ -75,8 +75,6 @@ public class UserService {
 		
 		
 	}
-	
-	
 	
 	/**
 	 * ªÒ»°sqlSession
