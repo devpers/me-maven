@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.me.maven.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.me.maven.model.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="account_bank" jdbcType="VARCHAR" property="accountBank" />
+    <result column="account_city" jdbcType="VARCHAR" property="accountCity" />
+    <result column="account_number" jdbcType="VARCHAR" property="accountNumber" />
+    <result column="account_province" jdbcType="VARCHAR" property="accountProvince" />
+    <result column="account_subBranch" jdbcType="VARCHAR" property="accountSubbranch" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="contact_person_phone" jdbcType="VARCHAR" property="contactPersonPhone" />
+    <result column="email_address" jdbcType="VARCHAR" property="emailAddress" />
+    <result column="legal_idCard" jdbcType="VARCHAR" property="legalIdcard" />
+    <result column="timestamper" jdbcType="TIMESTAMP" property="timestamper" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_number" jdbcType="VARCHAR" property="userNumber" />
+    <result column="userid" jdbcType="BIGINT" property="userid" />
+    <result column="debt_order_no" jdbcType="VARCHAR" property="debtOrderNo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, account_bank, account_city, account_number, account_province, account_subBranch, 
+    address, contact_person_phone, email_address, legal_idCard, timestamper, user_name, 
+    user_number, userid, debt_order_no
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.me.maven.model.User">
+    insert into user (id, account_bank, account_city, 
+      account_number, account_province, account_subBranch, 
+      address, contact_person_phone, email_address, 
+      legal_idCard, timestamper, user_name, 
+      user_number, userid, debt_order_no
+      )
+    values (#{id,jdbcType=BIGINT}, #{accountBank,jdbcType=VARCHAR}, #{accountCity,jdbcType=VARCHAR}, 
+      #{accountNumber,jdbcType=VARCHAR}, #{accountProvince,jdbcType=VARCHAR}, #{accountSubbranch,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{contactPersonPhone,jdbcType=VARCHAR}, #{emailAddress,jdbcType=VARCHAR}, 
+      #{legalIdcard,jdbcType=VARCHAR}, #{timestamper,jdbcType=TIMESTAMP}, #{userName,jdbcType=VARCHAR}, 
+      #{userNumber,jdbcType=VARCHAR}, #{userid,jdbcType=BIGINT}, #{debtOrderNo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.me.maven.model.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="accountBank != null">
+        account_bank,
+      </if>
+      <if test="accountCity != null">
+        account_city,
+      </if>
+      <if test="accountNumber != null">
+        account_number,
+      </if>
+      <if test="accountProvince != null">
+        account_province,
+      </if>
+      <if test="accountSubbranch != null">
+        account_subBranch,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="contactPersonPhone != null">
+        contact_person_phone,
+      </if>
+      <if test="emailAddress != null">
+        email_address,
+      </if>
+      <if test="legalIdcard != null">
+        legal_idCard,
+      </if>
+      <if test="timestamper != null">
+        timestamper,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userNumber != null">
+        user_number,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="debtOrderNo != null">
+        debt_order_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="accountBank != null">
+        #{accountBank,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCity != null">
+        #{accountCity,jdbcType=VARCHAR},
+      </if>
+      <if test="accountNumber != null">
+        #{accountNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="accountProvince != null">
+        #{accountProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="accountSubbranch != null">
+        #{accountSubbranch,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPersonPhone != null">
+        #{contactPersonPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="emailAddress != null">
+        #{emailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="legalIdcard != null">
+        #{legalIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="timestamper != null">
+        #{timestamper,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userNumber != null">
+        #{userNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="debtOrderNo != null">
+        #{debtOrderNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.me.maven.model.User">
+    update user
+    <set>
+      <if test="accountBank != null">
+        account_bank = #{accountBank,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCity != null">
+        account_city = #{accountCity,jdbcType=VARCHAR},
+      </if>
+      <if test="accountNumber != null">
+        account_number = #{accountNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="accountProvince != null">
+        account_province = #{accountProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="accountSubbranch != null">
+        account_subBranch = #{accountSubbranch,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPersonPhone != null">
+        contact_person_phone = #{contactPersonPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="emailAddress != null">
+        email_address = #{emailAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="legalIdcard != null">
+        legal_idCard = #{legalIdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="timestamper != null">
+        timestamper = #{timestamper,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userNumber != null">
+        user_number = #{userNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="debtOrderNo != null">
+        debt_order_no = #{debtOrderNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.me.maven.model.User">
+    update user
+    set account_bank = #{accountBank,jdbcType=VARCHAR},
+      account_city = #{accountCity,jdbcType=VARCHAR},
+      account_number = #{accountNumber,jdbcType=VARCHAR},
+      account_province = #{accountProvince,jdbcType=VARCHAR},
+      account_subBranch = #{accountSubbranch,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      contact_person_phone = #{contactPersonPhone,jdbcType=VARCHAR},
+      email_address = #{emailAddress,jdbcType=VARCHAR},
+      legal_idCard = #{legalIdcard,jdbcType=VARCHAR},
+      timestamper = #{timestamper,jdbcType=TIMESTAMP},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_number = #{userNumber,jdbcType=VARCHAR},
+      userid = #{userid,jdbcType=BIGINT},
+      debt_order_no = #{debtOrderNo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="findUserByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+  select <include refid="Base_Column_List"/> from user where user_name=#{name,jdbcType=VARCHAR}
+  </select>
+</mapper>

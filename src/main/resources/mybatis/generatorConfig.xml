@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration    
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"    
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+	
+	<generatorConfiguration>
+	
+		<classPathEntry location="D:\Resource\jar\mysql-connector-java-5.1.35.jar"/>
+		
+		<!-- 注意标签顺序 -->
+		<context id="me.generator" targetRuntime="MyBatis3">
+			
+			<commentGenerator>
+				<property name="suppressAllComments" value="true"/>
+			</commentGenerator>
+			
+			<jdbcConnection 
+				driverClass="com.mysql.jdbc.Driver" 
+				connectionURL="jdbc:mysql://localhost:3306/datahouse"
+				userId="root"
+				password="123456">
+			</jdbcConnection>
+			
+			<javaTypeResolver>
+				<property name="forceBigDecimal" value="true"/>
+			</javaTypeResolver>
+			
+			<javaModelGenerator targetPackage="com.me.maven.model" targetProject="./src/main/java">
+				<property name="enableSubPackages" value="false"/>
+				<property name="trimStrings" value="true"/>
+			</javaModelGenerator>
+			
+			<sqlMapGenerator targetPackage="mybatis.Mappers" targetProject="./src/main/resources">
+				<property name="enableSubPackages" value="false"/>
+			</sqlMapGenerator>
+			
+			<javaClientGenerator targetPackage="com.me.maven.dao" type="XMLMAPPER" targetProject="./src/main/java">
+				<property name="enableSubPackages" value="false"/>
+			</javaClientGenerator>
+			
+			<table tableName="user" domainObjectName="User" enableCountByExample="false"
+				enableDeleteByExample="false" enableUpdateByExample="false"
+				enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		</context>
+		
+	</generatorConfiguration>
